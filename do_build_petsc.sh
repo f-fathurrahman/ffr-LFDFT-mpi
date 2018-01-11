@@ -1,8 +1,7 @@
 #!/bin/bash
 
-INC="-I/home/efefer/mysoftwares/petsc-3.7.5/include/ -I../../"
-LIB="../../libmain.a libLFDFT_petsc.a -lblas -llapack -lfftw3 \
--L/home/efefer/mysoftwares/petsc-3.7.5/lib -lpetsc"
+INC="-I./local/petsc-3.8.3_openmpi_gnu_debug/include/ "
+LIB="libLFDFT_petsc.a -lblas -llapack -lfftw3 local/petsc-3.8.3_openmpi_gnu_debug/lib/libpetsc.a"
 
 make
 

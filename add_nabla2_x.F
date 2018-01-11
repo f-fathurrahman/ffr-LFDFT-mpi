@@ -4,7 +4,7 @@ SUBROUTINE add_nabla2_x( Nx, Ny, Nz, D2jl_x, nabla2 )
 
   IMPLICIT NONE  
 
-#include <petsc/finclude/petsc.h>
+#include "petsc/finclude/petsc.h"
   
   INTEGER :: Nx, Ny, Nz
   REAL(8) :: D2jl_x(Nx,Nx)
