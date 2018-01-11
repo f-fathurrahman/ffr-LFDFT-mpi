@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <petsc.h>
 
-void petsc_stop_()
+void petsc_stop()
 {
   PetscErrorCode ierr;
   ierr = PetscFinalize();
@@ -11,3 +11,12 @@ void petsc_stop_()
     exit(1);
   }
 }
+
+// This is supposed to be called from Fortran
+void petsc_stop_()
+{
+  petsc_stop();
+}
+
+
+
