@@ -2,6 +2,7 @@
 *.swo
 *~
 
+olds
 qe-6.1
 local
 test_petsc
