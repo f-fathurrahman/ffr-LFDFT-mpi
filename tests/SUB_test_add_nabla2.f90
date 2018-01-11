@@ -1,4 +1,4 @@
-PROGRAM test_add_nabla2
+SUBROUTINE test_add_nabla2()
 
   USE m_LF3d, ONLY : D2jl_x => LF3d_D2jl_x
   
@@ -12,8 +12,6 @@ PROGRAM test_add_nabla2
   !
   INTEGER :: ierr
   INTEGER :: Nprocs, my_rank
-
-  CALL Petsc_Start()
 
   CALL MPI_Comm_size( MPI_COMM_WORLD, Nprocs, ierr )
   CALL MPI_Comm_rank( MPI_COMM_WORLD, my_rank, ierr )
@@ -31,6 +29,5 @@ PROGRAM test_add_nabla2
 
   CALL dealloc_LF3d()
 
-  CALL Petsc_Stop()
+END SUBROUTINE 
 
-END PROGRAM 

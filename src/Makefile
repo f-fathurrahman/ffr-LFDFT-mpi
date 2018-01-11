@@ -19,6 +19,7 @@ CC_OPTS = -Wall -O3
 
 SRC = \
 m_constants.f90 \
+m_mpi.f90 \
 m_LF3d.f90 \
 init_LF3d_p.f90 \
 init_LF3d_c.f90 \
