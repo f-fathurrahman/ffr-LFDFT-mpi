@@ -5,7 +5,7 @@
 olds
 qe-6.1
 local
-test_petsc
+sandbox_petsc
 
 # Prerequisites
 *.d
