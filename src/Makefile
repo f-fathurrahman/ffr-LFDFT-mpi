@@ -13,6 +13,8 @@ LIB_FFTW3 = -lfftw3
 LIBS = $(LIB_LINALG) $(LIB_FFTW3)
 
 CC = mpicc
+PETSC_HOME = ../local/petsc-3.8.3_openmpi_gnu_debug/
+CC_INC = -I$(PETSC_HOME)/include
 CC_OPTS = -Wall -O3
 
 SRC = \
@@ -32,7 +34,9 @@ info_LF3d.f90 \
 dealloc_LF3d.f90 \
 mm_to_nn.f90
 
-C_SRC = add_nabla2_x.c
+C_SRC = add_nabla2_x.c \
+petsc_start.c \
+petsc_stop.c
 
 OBJ = $(C_SRC:.c=.o) $(SRC:.f90=.o)
 
@@ -46,7 +50,7 @@ OBJ = $(C_SRC:.c=.o) $(SRC:.f90=.o)
 	$(MAKE) $<
 
 %.o : %.c
-	$(CC) $(CC_OPTS) -c -o $(*F).o $<
+	$(CC) $(CC_INC) $(CC_OPTS) -c -o $(*F).o $<
 
 %.o : %.f90
 	$(F90) $(F90_OPTS) -c -o $(*F).o $<
