@@ -4,9 +4,26 @@
 #include "c_common.h"
 #include "c_m_mpi.h"
 
-void add_nabla2_x_( int *Nx, int *Ny, int *Nz, double *D2jl_x )
+
+//XXX This should be called only by master process 
+
+
+// probably nabla2 should be global ?
+
+void add_nabla2_x_( int *Nx, int *Ny, int *Nz, double *D2jl_x, Mat* nabla2 )
 {
+  int *colGbl;
+  int *colGbl_orig;
+  int ix, irow;
+
+  colGbl = (int*)malloc( Nx*sizeof(int) );
+  colGbl_orig = (int*)malloc( Nx*sizeof(int) );
+
+  // pattern for column indices
+  colGbl_orig[0] = 1;
   
+
+/* 
   if( M_MPI_my_rank == 0 ) {
     printf("Hello from add_nabla2_x\n");
     printf("Nx = %d\n", *Nx);
@@ -27,6 +44,7 @@ void add_nabla2_x_( int *Nx, int *Ny, int *Nz, double *D2jl_x )
       printf("\n");
     }
   }
+*/
 
 }
 

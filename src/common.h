@@ -1,5 +1,5 @@
-#ifndef C_COMMON_H
-#define C_COMMON_H
+#ifndef COMMON_H
+#define COMMON_H
 
 #define IDX2F(i,j,DIM1) (((j)-1)*(DIM1) + ((i)-1))
 #define IDX3F(i,j,k,DIM1,DIM2) (((k)-1)*(DIM1)*(DIM2) + ((j)-1)*(DIM1) + ((i)-1))
