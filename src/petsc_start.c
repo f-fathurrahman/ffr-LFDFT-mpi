@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <petsc.h>
 
-#include "c_m_mpi.h"
+#include "m_mpi.h"
 
 // This function is supposed to be called from Fortran as a subroutine.
 void petsc_start_()

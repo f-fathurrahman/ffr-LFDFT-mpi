@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <petsc.h>
 
-#include "c_common.h"
-#include "c_m_mpi.h"
+#include "common.h"
+#include "m_mpi.h"
 
 
 //XXX This should be called only by master process 
@@ -16,8 +16,8 @@ void add_nabla2_x_( int *Nx, int *Ny, int *Nz, double *D2jl_x, Mat* nabla2 )
   int *colGbl_orig;
   int ix, irow;
 
-  colGbl = (int*)malloc( Nx*sizeof(int) );
-  colGbl_orig = (int*)malloc( Nx*sizeof(int) );
+  colGbl = (int*)malloc( (*Nx)*sizeof(int) );
+  colGbl_orig = (int*)malloc( (*Nx)*sizeof(int) );
 
   // pattern for column indices
   colGbl_orig[0] = 1;

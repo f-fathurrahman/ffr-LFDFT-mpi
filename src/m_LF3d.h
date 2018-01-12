@@ -2,12 +2,11 @@
 #define M_LF3D_H
 
 
+//const int LF3d_PERIODIC = 1;
+//const int LF3d_CLUSTER  = 2;
+//const int LF3d_SINC     = 3;
 
-int LF3d_PERIODIC = 1;
-int LF3d_CLUSTER  = 2;
-int LF3d_SINC     = 3;
-
-struct LF3d_T {
+typedef struct {
 
   int type;
   int NN[3];
@@ -41,7 +40,7 @@ struct LF3d_T {
   double* G2;
   double* Gv;
 
-}
+} LF3d_T;
 
 #endif
 

@@ -1,3 +1,7 @@
+
+#include <stdio.h>
+#include "m_LF3d.h"
+
 void info_LF3d( LF3d_T LF3d )
 {
   int i;
