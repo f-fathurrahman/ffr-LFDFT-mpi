@@ -15,7 +15,7 @@ void init_LF3d_p( LF3d_T* LF3d, int NN[3], double AA[3], double BB[3] );
 void info_LF3d( LF3d_T LF3d );
 
 
-void add_nabla2_x( int *Nx, int *Ny, int *Nz, double *D2jl_x, Mat* nabla2 );
+void add_nabla2_x( int Nx, int Ny, int Nz, double *D2jl_x, Mat* nabla2 );
 
 //
 // from F90
