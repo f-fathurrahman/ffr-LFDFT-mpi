@@ -45,6 +45,7 @@ void add_nabla2_x( int Nx, int Ny, int Nz, double *D2jl_x, Mat* nabla2 )
     }
   }
   
+  printf("\nFinished calling add_nabla2_x\n");
 
 /* 
   if( M_MPI_my_rank == 0 ) {

@@ -10,7 +10,7 @@ if [ "$#" -ne 2 ]; then
 fi
 
 INC="-I../src/ -I../local/petsc-3.8.3_openmpi_gnu_debug/include"
-LIB="../src/libmain.a ../local/petsc-3.8.3_openmpi_gnu_debug/lib/libpetsc.a -lblas -llapack -lfftw3 -lX11 -lm -lgfortran"
+LIB="../src/libmain.a ../local/petsc-3.8.3_openmpi_gnu_debug/lib/libpetsc.a -lblas -llapack -lfftw3 -lX11 -lm -lgfortran -ldl"
 
 bas=`basename $1 .f90`
 
