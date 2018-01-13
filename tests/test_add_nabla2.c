@@ -8,7 +8,7 @@ int main( int argc, char** argv)
   petsc_start(argc, argv);
   
   LF3d_T LF3d;
-  int NN[3] = {3, 3, 3};
+  int NN[3] = {3, 5, 3};
   double AA[3] = { 0.0, 0.0, 0.0 };
   double BB[3] = { 16.0, 16.0, 16.0 };
   
@@ -45,6 +45,7 @@ int main( int argc, char** argv)
   
   if( M_MPI_my_rank == 0 ) {
     add_nabla2_x( Nx, Ny, Nz, LF3d.D2jl_x, &nabla2 );
+    add_nabla2_y( Nx, Ny, Nz, LF3d.D2jl_y, &nabla2 );
   }
 
   ierr = MatAssemblyBegin( nabla2, MAT_FINAL_ASSEMBLY );
@@ -53,8 +54,6 @@ int main( int argc, char** argv)
   if( M_MPI_my_rank == 0 ) {
     MatView( nabla2, PETSC_VIEWER_STDOUT_SELF );
   }
-
-
 
   petsc_stop();
 

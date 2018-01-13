@@ -12,14 +12,14 @@
 
 void add_nabla2_x( int Nx, int Ny, int Nz, double *D2jl_x, Mat* nabla2 )
 {
-  int *colGbl;
-  int *colGbl_orig;
-  int ix, irow;
+  PetscInt* colGbl;
+  PetscInt* colGbl_orig;
+  PetscInt ix, irow;
   PetscErrorCode ierr;
   PetscInt rowGbl;
 
-  colGbl = (int*)malloc( Nx*sizeof(int) );
-  colGbl_orig = (int*)malloc( Nx*sizeof(int) );
+  colGbl = malloc( Nx*sizeof(int) );
+  colGbl_orig = malloc( Nx*sizeof(int) );
 
   // Initialize pattern for column indices
   colGbl_orig[0] = 1;
@@ -40,11 +40,14 @@ void add_nabla2_x( int Nx, int Ny, int Nz, double *D2jl_x, Mat* nabla2 )
       //
       ierr = MatSetValues( *nabla2, 1, &rowGbl, Nx, colGbl, &D2jl_x[IDX2F(1,ix,Nx)], ADD_VALUES );
       if(ierr){
-        printf("Error in calling MatSetValues\n");
+        printf("Error in calling MatSetValues in add_nabla2_x\n");
       }
     }
   }
   
+  free(colGbl); colGbl = NULL;
+  free(colGbl_orig); colGbl_orig = NULL;
+
   printf("\nFinished calling add_nabla2_x\n");
 
 /* 

@@ -18,6 +18,7 @@ void info_LF3d( LF3d_T LF3d );
 void petsc_start(int argc, char **argv);
 void petsc_stop();
 void add_nabla2_x( int Nx, int Ny, int Nz, double *D2jl_x, Mat* nabla2 );
+void add_nabla2_y( int Nx, int Ny, int Nz, double *D2jl_y, Mat* nabla2 );
 
 //
 // from F90

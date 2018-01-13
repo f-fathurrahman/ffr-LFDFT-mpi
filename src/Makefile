@@ -24,6 +24,7 @@ C_SRC = \
 init_LF3d_p.c \
 info_LF3d.c \
 add_nabla2_x.c \
+add_nabla2_y.c \
 petsc_start.c \
 petsc_stop.c \
 PrintArray.c
