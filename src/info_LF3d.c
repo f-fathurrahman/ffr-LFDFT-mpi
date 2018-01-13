@@ -18,38 +18,48 @@ void info_LF3d( LF3d_T LF3d )
 
   int i;
 
-  printf("\ngrid_x = \n");
-  for(i = 0; i < Nx; i++ ) {
-    printf("%5d  %18.10f\n", i+1, LF3d.grid_x[i]);
+  int is_small = Nx < 8 && Ny < 8 && Nz < 8;
+
+  if( is_small ) {
+    printf("\ngrid_x = \n");
+    for(i = 0; i < Nx; i++ ) {
+      printf("%5d  %18.10f\n", i+1, LF3d.grid_x[i]);
+    }
+
+    printf("\ngrid_y = \n");
+    for(i = 0; i < Ny; i++ ) {
+      printf("%5d  %18.10f\n", i+1, LF3d.grid_y[i]);
+    }
+
+    printf("\ngrid_z = \n");
+    for(i = 0; i < Nz; i++ ) {
+      printf("%5d  %18.10f\n", i+1, LF3d.grid_z[i]);
+    }
+    
+    if( LF3d.D1jl_x != NULL ) {
+      printf("\nMatrix D1jl_x\n");
+      PrintMatrix( LF3d.D1jl_x, Nx, Nx );
+    }
+
+    if( LF3d.D1jl_y != NULL ) {
+      printf("\nMatrix D1jl_y\n");
+      PrintMatrix( LF3d.D1jl_y, Ny, Ny );
+    }
+
+    if( LF3d.D1jl_z != NULL ) {
+      printf("\nMatrix D1jl_z\n");
+      PrintMatrix( LF3d.D1jl_z, Nz, Nz );
+    }
+
+    printf("\nMatrix D2jl_x\n");
+    PrintMatrix( LF3d.D2jl_x, Nx, Nx );
+
+    printf("\nMatrix D2jl_y\n");
+    PrintMatrix( LF3d.D2jl_y, Ny, Ny );
+
+    printf("\nMatrix D2jl_z\n");
+    PrintMatrix( LF3d.D2jl_z, Nz, Nz );
   }
-
-  printf("\ngrid_y = \n");
-  for(i = 0; i < Ny; i++ ) {
-    printf("%5d  %18.10f\n", i+1, LF3d.grid_y[i]);
-  }
-
-  printf("\ngrid_z = \n");
-  for(i = 0; i < Nz; i++ ) {
-    printf("%5d  %18.10f\n", i+1, LF3d.grid_z[i]);
-  }
-
-  printf("\nMatrix D1jl_x\n");
-  PrintMatrix( LF3d.D1jl_x, Nx, Nx );
-
-  printf("\nMatrix D1jl_y\n");
-  PrintMatrix( LF3d.D1jl_y, Ny, Ny );
-
-  printf("\nMatrix D1jl_z\n");
-  PrintMatrix( LF3d.D1jl_z, Nz, Nz );
-
-  printf("\nMatrix D2jl_x\n");
-  PrintMatrix( LF3d.D2jl_x, Nx, Nx );
-
-  printf("\nMatrix D2jl_y\n");
-  PrintMatrix( LF3d.D2jl_y, Ny, Ny );
-
-  printf("\nMatrix D2jl_z\n");
-  PrintMatrix( LF3d.D2jl_z, Nz, Nz );
 
   printf("\nSome grid points in x, y and z directions:\n");
   printf(" %8d%10.5f%8d%10.5f%8d%10.5f\n",

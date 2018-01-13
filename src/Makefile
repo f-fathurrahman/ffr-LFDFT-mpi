@@ -23,8 +23,10 @@ LIBS = $(LIB_LINALG) $(LIB_FFTW3)
 C_SRC = \
 init_LF3d_p.c \
 info_LF3d.c \
+dealloc_LF3d.c \
 add_nabla2_x.c \
 add_nabla2_y.c \
+add_nabla2_z.c \
 petsc_start.c \
 petsc_stop.c \
 PrintArray.c
