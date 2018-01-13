@@ -2,21 +2,19 @@
 ! A subroutine to generate of G-vectors
 ! Not using minimal isotropic representation
 !
-SUBROUTINE init_gvec()
-  USE m_constants, ONLY : PI
-  USE m_LF3d, ONLY : NN => LF3d_NN, &
-                     LL => LF3d_LL, &
-                     G2 => LF3d_G2, &
-                     Gv => LF3d_Gv, &
-                     Npoints => LF3d_Npoints
+SUBROUTINE init_gvec( Npoints, NN, LL, G2, Gv )
   IMPLICIT NONE
   !
+  INTEGER :: Npoints, NN(3)
+  REAL(8) :: LL(3)
+  REAL(8) :: G2(Npoints)
+  REAL(8) :: Gv(3,Npoints)
+  !
   INTEGER :: i, j, k, ig, ii, jj, kk
+	!
+  REAL(8), PARAMETER :: PI = 4.d0*atan(1.d0)
   ! Function
   INTEGER :: mm_to_nn
-
-  ALLOCATE( G2(Npoints) )
-  ALLOCATE( Gv(3,Npoints) )
   
   ig = 0
   DO k = 0, NN(3)-1

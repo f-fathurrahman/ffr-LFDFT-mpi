@@ -8,7 +8,7 @@ MAKE = make
 AR = ar
 
 CC = mpicc
-PETSC_HOME = ../local/petsc-3.8.3_openmpi_gnu_debug/
+PETSC_HOME = ../local/petsc-3.8.3_openmpi_gnu_debug
 CC_INC = -I$(PETSC_HOME)/include
 CC_OPTS = -Wall -O3
 
@@ -20,16 +20,21 @@ LIB_FFTW3 = -lfftw3
 LIBS = $(LIB_LINALG) $(LIB_FFTW3)
 
 
-SRC = 
-
 C_SRC = \
 init_LF3d_p.c \
 info_LF3d.c \
 add_nabla2_x.c \
 petsc_start.c \
-petsc_stop.c
+petsc_stop.c \
+PrintArray.c
 
-OBJ = $(C_SRC:.c=.o) $(SRC:.f90=.o)
+F90_SRC = \
+init_grid_1d_p.f90 \
+init_deriv_matrix_p.f90 \
+init_gvec.f90 \
+mm_to_nn.f90
+
+OBJ = $(C_SRC:.c=.o) $(F90_SRC:.f90=.o)
 
 #
 # Suffix rule for Fortran 90
