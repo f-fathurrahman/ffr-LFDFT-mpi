@@ -33,7 +33,11 @@ PrintArray.c
 
 F90_SRC = \
 init_grid_1d_p.f90 \
+init_grid_1d_c.f90 \
+init_grid_1d_sinc.f90 \
 init_deriv_matrix_p.f90 \
+init_deriv_matrix_c.f90 \
+init_deriv_matrix_sinc.f90 \
 init_gvec.f90 \
 mm_to_nn.f90
 

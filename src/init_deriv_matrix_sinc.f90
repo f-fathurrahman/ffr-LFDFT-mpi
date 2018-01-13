@@ -18,7 +18,6 @@
 !!
 
 SUBROUTINE init_deriv_matrix_sinc( N, h, grid, D2jl )
-  USE m_constants, ONLY : PI
   IMPLICIT NONE
 
   !! Number of points
@@ -33,6 +32,7 @@ SUBROUTINE init_deriv_matrix_sinc( N, h, grid, D2jl )
   !! Second derivative matrix
   REAL(8) :: D2jl(N,N)
 
+  REAL(8), PARAMETER :: PI = 4.d0*atan(1.d0)
   INTEGER :: i, j
   
   ! Diagonal part
