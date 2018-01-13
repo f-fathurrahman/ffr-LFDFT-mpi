@@ -1,6 +1,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include <petsc.h>
 #include "m_LF3d.h"
 
 #define IDX2F(i,j,DIM1) (((j)-1)*(DIM1) + ((i)-1))
@@ -14,6 +15,7 @@ void init_LF3d_p( LF3d_T* LF3d, int NN[3], double AA[3], double BB[3] );
 void info_LF3d( LF3d_T LF3d );
 
 
+void add_nabla2_x( int *Nx, int *Ny, int *Nz, double *D2jl_x, Mat* nabla2 );
 
 //
 // from F90

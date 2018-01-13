@@ -2,9 +2,9 @@
 #define M_LF3D_H
 
 
-//const int LF3d_PERIODIC = 1;
-//const int LF3d_CLUSTER  = 2;
-//const int LF3d_SINC     = 3;
+/*const int LF3d_PERIODIC = 1;
+const int LF3d_CLUSTER  = 2;
+const int LF3d_SINC     = 3;*/
 
 typedef struct {
 

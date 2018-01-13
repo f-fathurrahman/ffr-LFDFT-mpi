@@ -10,7 +10,7 @@
 
 // probably nabla2 should be global ?
 
-void add_nabla2_x_( int *Nx, int *Ny, int *Nz, double *D2jl_x, Mat* nabla2 )
+void add_nabla2_x( int *Nx, int *Ny, int *Nz, double *D2jl_x, Mat* nabla2 )
 {
   int *colGbl;
   int *colGbl_orig;
