@@ -10,8 +10,8 @@ if [ "$#" -ne 3 ]; then
   exit 1
 fi
 
-INC="-I../src/ -I../local/petsc-3.8.3_openmpi_gnu_$3/include"
-LIB="../src/libmain.a ../local/petsc-3.8.3_openmpi_gnu_$3/lib/libpetsc.a -lblas -llapack -lfftw3 -lX11 -lm -lgfortran -ldl"
+INC="-I../src/ -I../local/petsc-3.8.3_openmpi_gnu/include"
+LIB="../src/libmain.a ../local/petsc-3.8.3_openmpi_gnu/lib/libpetsc_$3.a -lblas -llapack -lfftw3 -lX11 -lm -lgfortran -ldl"
 
 bas=`basename $1 .c`
 
