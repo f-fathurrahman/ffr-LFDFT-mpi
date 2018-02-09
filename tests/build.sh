@@ -1,24 +1,24 @@
 #!/bin/bash
 
-if [ "$#" -ne 3 ]; then
+if [ "$#" -ne 1 ]; then
   echo
   echo "ERROR calling this dumb one-line build script"
-  echo "Need two parameters: main file, compiler command, and version (opt or debug)"
-  echo "Example:"
-  echo "./build.sh myfile.c \"mpicc -O2\" debug"
+  echo "Need one parameter: main file"
+  echo "mpicc will be used as compiler command"
   echo
   exit 1
 fi
 
-INC="-I../src/ -I../local/petsc-3.8.3_openmpi_gnu/include"
-LIB="../src/libmain.a ../local/petsc-3.8.3_openmpi_gnu/lib/libpetsc_$3.a -lblas -llapack -lfftw3 -lX11 -lm -lgfortran -ldl"
+INC="-I../src/ -I/usr/local/petsc-3.8.3_openmpi_gnu/include"
+LIB="../src/libmain.a -L/usr/local/petsc-3.8.3_openmpi_gnu/lib -lpetsc \
+-lblas -llapack -lfftw3 -lm -lgfortran"
 
 bas=`basename $1 .c`
 
 # remove the previous executable
-rm -vf ${bas}_$3.x
+rm -vf ${bas}.x
 
-$2 $INC $1 $LIB -o ${bas}_$3.x
+mpicc $INC $1 $LIB -o ${bas}.x
 
 echo "Test executable: $bas.x"
 

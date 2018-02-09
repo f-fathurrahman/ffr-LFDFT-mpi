@@ -1,14 +1,8 @@
-# For the moment, gfortran will used throughout because this is the default
-# Fortran compiler used by Open MPI
-
-#INC = -I/home/efefer/mysoftwares/petsc-3.7.5/include/
-#INC = -I./local/petsc-3.8.3_openmpi_gnu_debug/include/
-
 MAKE = make
 AR = ar
 
 CC = mpicc
-PETSC_HOME = ../local/petsc-3.8.3_openmpi_gnu_debug
+PETSC_HOME = /usr/local/petsc-3.8.3_openmpi_gnu
 CC_INC = -I$(PETSC_HOME)/include
 CC_OPTS = -Wall -O3
 
