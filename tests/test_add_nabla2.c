@@ -8,7 +8,7 @@ int main( int argc, char** argv)
   petsc_start(argc, argv);
   
   LF3d_T LF3d;
-  int NN[3] = {65, 65, 65};
+  int NN[3] = {5, 5, 5};
   double AA[3] = { 0.0, 0.0, 0.0 };
   double BB[3] = { 16.0, 16.0, 16.0 };
   
@@ -34,29 +34,29 @@ int main( int argc, char** argv)
   }
   //
   Mat nabla2;
-  if( M_MPI_my_rank == 0 ) {
-    printf("\nNumber of nonzeros = %10d\n", nnzc*Npoints);
-    printf("Memory required for those nonzeros is %18.10f GB\n", nnzc*Npoints*8.0/1024.0/1024.0/1024.0);
-  }
+  PetscPrintf(PETSC_COMM_WORLD, "\nNumber of nonzeros = %10d\n", nnzc*Npoints);
+  PetscPrintf(PETSC_COMM_WORLD, "Memory required for those nonzeros is %18.10f GB\n",
+              nnzc*Npoints*8.0/1024.0/1024.0/1024.0);
 
   PetscErrorCode ierr;
   
-  ierr = MatCreateSeqAIJ( PETSC_COMM_SELF, Npoints, Npoints, nnzc, NULL, &nabla2);
+  ierr = MatCreateAIJ( PETSC_COMM_WORLD, PETSC_DECIDE, PETSC_DECIDE, 
+                       Npoints, Npoints, nnzc, NULL, nnzc-1, NULL, &nabla2 );
   // need to call this ?
   ierr = MatSetUp( nabla2 );
   
-  if( M_MPI_my_rank == 0 ) {
+//  if( M_MPI_my_rank == 0 ) {
     add_nabla2_z( Nx, Ny, Nz, LF3d.D2jl_z, &nabla2 );
     add_nabla2_y( Nx, Ny, Nz, LF3d.D2jl_y, &nabla2 );
     add_nabla2_x( Nx, Ny, Nz, LF3d.D2jl_x, &nabla2 );
-  }
+//  }
 
   ierr = MatAssemblyBegin( nabla2, MAT_FINAL_ASSEMBLY );
   ierr = MatAssemblyEnd( nabla2, MAT_FINAL_ASSEMBLY );
 
   int is_big = NN[0] > 10 || NN[1] > 10 || NN[2] > 10;
-  if( M_MPI_my_rank == 0 && !is_big ) {
-    MatView( nabla2, PETSC_VIEWER_STDOUT_SELF );
+  if( !is_big ) {
+    MatView( nabla2, PETSC_VIEWER_STDOUT_WORLD );
   }
 
   dealloc_LF3d(LF3d);
