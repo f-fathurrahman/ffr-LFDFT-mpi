@@ -46,7 +46,7 @@ void add_nabla2_y( int Nx, int Ny, int Nz, double *D2jl_y, Mat* nabla2 )
   free(colGbl); colGbl = NULL;
   free(colGbl_orig); colGbl_orig = NULL;
 
-  printf("\nFinished calling add_nabla2_y\n");
+  PetscPrintf(PETSC_COMM_WORLD, "\nFinished calling add_nabla2_y\n");
 
 }
 
