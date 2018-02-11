@@ -8,7 +8,7 @@ int main( int argc, char** argv)
   petsc_start(argc, argv);
   
   LF3d_T LF3d;
-  int NN[3] = {45, 45, 45};
+  int NN[3] = {3, 3, 3};
   double AA[3] = { 0.0, 0.0, 0.0 };
   double BB[3] = { 16.0, 16.0, 16.0 };
   
@@ -59,7 +59,7 @@ int main( int argc, char** argv)
   ierr = MatAssemblyBegin( nabla2, MAT_FINAL_ASSEMBLY );
   ierr = MatAssemblyEnd( nabla2, MAT_FINAL_ASSEMBLY );
 
-  int is_big = NN[0] > 10 || NN[1] > 10 || NN[2] > 10;
+  int is_big = NN[0] > 4 || NN[1] > 4 || NN[2] > 4;
   if( !is_big ) {
     MatView( nabla2, PETSC_VIEWER_STDOUT_WORLD );
   }
