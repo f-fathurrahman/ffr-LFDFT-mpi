@@ -2,6 +2,8 @@
 *.swo
 *~
 
+*.dat
+
 olds
 qe-6.1
 local
