@@ -10,7 +10,7 @@
 
 // probably nabla2 should be global ?
 
-void add_nabla2_x( int Nx, int Ny, int Nz, double* D2jl_x, Mat* nabla2 )
+void add_nabla2_x( int Nx, int Ny, int Nz, double *D2jl_x, Mat* nabla2 )
 {
   PetscInt* colGbl;
   PetscInt* colGbl_orig;
@@ -30,22 +30,18 @@ void add_nabla2_x( int Nx, int Ny, int Nz, double* D2jl_x, Mat* nabla2 )
   }
   
   int i;
-  for( rowGbl = 0; rowGbl < Nx*Ny*Nz; rowGbl++ ) {
-    for( ix = 1; ix <=Nx; ix++ ) {
-      irow = rowGbl + 1 - (ix-1)*Ny*Nz;
-      printf("rowGbl = %d, irow = %d\n", rowGbl, irow);
-      //
+  for( ix = 1; ix <= Nx; ix++ ) {
+    for( irow = 1; irow <= Ny*Nz; irow++ ) {
       // shift colGbl according to irow
       for( i = 0; i < Nx; i++ ) {
         colGbl[i] = colGbl_orig[i] + irow - 2;
       }
-      //rowGbl = irow + (ix-1)*Ny*Nz - 1;
+      rowGbl = irow + (ix-1)*Ny*Nz - 1;
       printf("add_nabla2_x: rowGbl = %d\n", rowGbl);
       //
       ierr = MatSetValues( *nabla2, 1, &rowGbl, Nx, colGbl, &D2jl_x[IDX2F(1,ix,Nx)], ADD_VALUES );
-      if( ierr ) {
-        printf("Error when calling MatSetValues\n");
-        exit(1);
+      if(ierr){
+        printf("Error in calling MatSetValues in add_nabla2_x\n");
       }
     }
   }

@@ -21,6 +21,7 @@ dealloc_LF3d.c \
 add_nabla2_x.c \
 add_nabla2_y.c \
 add_nabla2_z.c \
+init_nabla2_sparse.c \
 petsc_start.c \
 petsc_stop.c \
 PrintArray.c
@@ -33,7 +34,8 @@ init_deriv_matrix_p.f90 \
 init_deriv_matrix_c.f90 \
 init_deriv_matrix_sinc.f90 \
 init_gvec.f90 \
-mm_to_nn.f90
+mm_to_nn.f90 \
+init_nabla2_sparse_debug.f90
 
 OBJ = $(C_SRC:.c=.o) $(F90_SRC:.f90=.o)
 

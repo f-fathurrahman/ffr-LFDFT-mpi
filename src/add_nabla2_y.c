@@ -35,6 +35,7 @@ void add_nabla2_y( int Nx, int Ny, int Nz, double *D2jl_y, Mat* nabla2 )
         for( i = 0; i < Ny; i++ ) {
           colGbl[i] = colGbl_orig[i] + iz - 1 + (ix-1)*Ny*Nz - 1;
         }
+        printf("add_nabla2_y: rowGbl = %d\n", rowGbl);
         ierr = MatSetValues( *nabla2, 1, &rowGbl, Ny, colGbl, &D2jl_y[IDX2F(1,rowLoc,Ny)], ADD_VALUES );
         if(ierr){
           printf("Error in calling MatSetValues in add_nabla2_y\n");
